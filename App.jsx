@@ -1,14 +1,16 @@
-import './App.css';
-import Todo from './components/Todo.jsx'
-import Title from './components/Title.jsx'
+import "./App.css";
+import Todo from "./components/Todo.jsx";
+import Title from "./components/Title.jsx";
 
 function App() {
   return (
     <div>
-    <Title />
-    <Todo />
-    <Todo />
-    <Todo />
+      <Title />
+      <div className="todo__wrapper">
+        <Todo />
+        <Todo />
+        <Todo />
+      </div>
     </div>
   );
 }
