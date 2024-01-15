@@ -6,9 +6,6 @@ import Counter from "./components/Counter.jsx"
 import React, { useState } from 'react';
 
 function App() {
-
-  return <Counter />
-
 const [showModal, setShowModal] = useState(false)
 
   return (
