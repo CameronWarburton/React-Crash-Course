@@ -1,4 +1,3 @@
-import './Counter.css'
 import { useState } from "react"
 
 function Counter() {
