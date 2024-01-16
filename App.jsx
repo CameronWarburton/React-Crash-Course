@@ -3,14 +3,13 @@ import Todo from "./components/Todo.jsx";
 import Title from "./components/Title.jsx";
 import Modal from "./components/Modal.jsx";
 import Counter from "./components/Counter.jsx";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
 
   function onTodoDelete() {
     setShowModal(true);
-    console.log("onTodoDelete()");
   }
 
   function confirmModal() {
@@ -20,6 +19,18 @@ function App() {
   function cancelModal() {
     setShowModal(false);
   }
+
+  useEffect(() => {
+    console.log('ONLY on mount')
+  }, [])
+
+  useEffect(() => {
+    console.log(`on mount and on ${showModal} change`)
+  }, [showModal])
+
+  useEffect(() => {
+    console.log('EVERY Render')
+  },)
 
   return (
     <div>
