@@ -9,22 +9,29 @@ function Home() {
       "https://jsonplaceholder.typicode.com/users"
     );
     setUsers(data);
-    console.log(data)
+    console.log(data);
   }
 
   useEffect(() => {
-    setTimeout (() => {
-        fecthUsers();
+    setTimeout(() => {
+      fecthUsers();
     }, 500);
   }, []);
 
+  const pixels = "3px";
+
   return (
     <div>
-        {users.length > 0 
-        ?
-        <h1>{users[0]?.name}</h1>
-        : <h1>Loading...</h1>
-        }
+      {users.map((user) => {
+        return (
+          <div style={{ border: `${pixels} solid black` }}>
+            <div>{user?.id}</div>
+            <div>{user?.name}</div>
+            <div>{user?.email}</div>
+            <div>{user?.username}</div>
+          </div>
+        );
+      })}
     </div>
   );
 }
