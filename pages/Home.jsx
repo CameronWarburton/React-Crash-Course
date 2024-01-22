@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import User from "../components/User.jsx";
+import { Link } from "react-router-dom";
+import { render } from "@testing-library/react";
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -15,25 +18,27 @@ function Home() {
   useEffect(() => {
     setTimeout(() => {
       fecthUsers();
-    }, 500);
+    }, 2000);
   }, []);
 
-  const pixels = "3px";
+  function renderUsers() {
+    return users.map((user) => (
+      <Link to={`users/${user.id}`} key={user.id}>
+        <User
+          id={user.id}
+          name={user.name}
+          email={user.email}
+          username={user.username}
+        />
+      </Link>
+    ));
+  }
 
-  return (
-    <div>
-      {users.map((user) => {
-        return (
-          <div style={{ border: `${pixels} solid black` }}>
-            <div>{user?.id}</div>
-            <div>{user?.name}</div>
-            <div>{user?.email}</div>
-            <div>{user?.username}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
+  function renderSkeletonLoading() {
+    return <h1>Loading...</h1>
+  }
+
+  return <div>{users.length ? renderUsers() : renderSkeletonLoading()}</div>;
 }
 
 export default Home;
